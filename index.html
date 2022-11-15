@@ -23,8 +23,8 @@
             <!-- Container immagine profilo con nome -->
             <div class="lightgrey-bg d-flex justify-content-between align-items-center">
                 <div class="d-flex justify-content-between align-items-center p-2">
-                    <div id="profilo-utente" class="pe-2">
-                        <img class="w-100 rounded-circle" src="./assets/img/avatar_1.jpg" alt="">
+                    <div class="pe-2 profilo-utente">
+                        <img class="w-100 rounded-circle" src="./assets/img/avatar_io.jpg" alt="">
                     </div>
                     <span>Carmine</span>
                 </div>
@@ -47,7 +47,20 @@
             <!-- Container input finder -->
             <div class="input-group p-1">
                 <span class="input-group-text bg-light px-4" id="inputGroup-sizing-default"><i class="fa-solid fa-magnifying-glass text-secondary"></i></span>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Cerca o inizia una nuova chat">
+            </div>
+            <!-- Container select chat -->
+            <div>
+                <div v-for="( element, index ) in contacts" class="d-flex align-items-center p-3 chat-user">
+                    <div class="profilo-utente pe-2">
+                        <img class="w-100 rounded-circle" :src="`./assets/img/avatar${element.avatar}.jpg`" alt="">
+                    </div>
+                    <div>
+                        <h6 class="m-0 p-0">{{element.name}}</h6>
+                        <span class="text-secondary">Ultimo messaggio inviato</span>
+                    </div>
+
+                </div>
             </div>
         </div>
         <!-- Contenitore Chat a destra -->
@@ -55,7 +68,7 @@
             <!-- Container dinamico chat utente -->
             <div class="lightgrey-bg d-flex justify-content-between align-items-center">
                 <div class="d-flex justify-content-between align-items-center p-2">
-                    <div id="profilo-utente" class="pe-2">
+                    <div class="pe-2 profilo-utente">
                         <img class="w-100 rounded-circle" src="./assets/img/avatar_3.jpg" alt="">
                     </div>
                     <span>Nicola</span>
@@ -70,10 +83,10 @@
             <div id="chat" class="overflow-visible flex-grow-1">
                 
             </div>
-            <div class="input-group">
-                <span class="input-group-text bg-light " id="inputGroup-sizing-default"><i class="fa-solid fa-magnifying-glass text-secondary"></i></span>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                <span class="input-group-text bg-light" id="inputGroup-sizing-default"><i class="fa-solid fa-magnifying-glass text-secondary"></i></span>
+            <div class="input-group p-2 bg-lightbrown">
+                <span class="input-group-text bg-lightbrown rounded-0 border-0 px-4" id="inputGroup-sizing-default"><i class="fa-regular fa-face-smile"></i></span>
+                <input type="text" class="form-control rounded-3" placeholder="Scrivi un messaggio" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <span class="input-group-text bg-lightbrown rounded-0 border-0 px-4" id="inputGroup-sizing-default"><i class="fa-solid fa-microphone"></i></span>
             </div>
         </div>
     </div>
