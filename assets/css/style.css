@@ -44,18 +44,29 @@
     font-size: 0.7rem;
 }
 
-.inviati{
+.sent{
+    display: flex;
+    justify-content: end;
+}
+
+.sent > p{
     background-color: #D5F9BA;
+}
+
+.whidt-message{
     width: 40%;
 }
 
-.ricevuti{
+.received > p{
     background-color: whitesmoke;
-    width: 40%;
 }
 
 .resize-small{
     font-size: 0.5rem;
+}
+
+i{
+    cursor: pointer;
 }
 
 

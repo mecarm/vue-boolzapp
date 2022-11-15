@@ -26,7 +26,7 @@ var app = new Vue({
         ],
       },
       {
-        name: "Fabio",
+        name: "Fabiola",
         avatar: "_2",
         time: '11:45',
         visible: true,
@@ -172,6 +172,12 @@ var app = new Vue({
         ],
       },
     ],
+    currentIndex: 0,
   },
-  methods: {},
+  methods: {
+    indiceCorrente(param){
+        console.log(this.currentIndex);
+        return this.currentIndex = param
+    }
+  },
 });

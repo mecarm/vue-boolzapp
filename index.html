@@ -51,7 +51,7 @@
             </div>
                 <!-- Container select chat dinamiche-->
             <div class="overflow-auto flex-grow-1">
-                <div v-for="( element, index ) in contacts" class="d-flex justify-content-between align-items-center chat-user p-3">
+                <div v-for="( element, index ) in contacts" class="d-flex justify-content-between align-items-center chat-user p-3" @click="indiceCorrente(index)">
                     <div class="d-flex align-items-center">
                         <div class="profilo-utente pe-2">
                             <img class="w-100 rounded-circle" :src="`./assets/img/avatar${element.avatar}.jpg`" alt="">
@@ -73,9 +73,9 @@
             <div class="lightgrey-bg d-flex justify-content-between align-items-center">
                 <div class="d-flex justify-content-between align-items-center p-2">
                     <div class="pe-2 profilo-utente">
-                        <img class="w-100 rounded-circle" src="./assets/img/avatar_3.jpg" alt="">
+                        <img class="w-100 rounded-circle" :src="`./assets/img/avatar${contacts[currentIndex].avatar}.jpg`" alt="">
                     </div>
-                    <span>Nicola</span>
+                    <span>{{contacts[currentIndex].name}}</span>
                 </div>
                 <div class="p-3">
                     <i class="fa-solid fa-magnifying-glass ps-2 text-secondary"></i>
@@ -84,17 +84,11 @@
                 </div>
             </div>
             <!-- Container Chat -->
-            <div id="chat" class="overflow-visible flex-grow-1">
-                <div class="p-5 d-flex flex-column">
-                    <div>
-                        <p class="ricevuti rounded-3 ps-3 p-2 mt-1 d-flex justify-content-between">
-                            Ciao
-                            <span class="resize-small mt-4">12:00</span>
-                        </p>
-                    </div>
-                    <div class="d-flex justify-content-end">
-                        <p class="inviati rounded-3 ps-3 p-2 mt-1 d-flex justify-content-between">
-                            ciao
+            <div id="chat" class="overflow-auto flex-grow-1">
+                <div class="px-5 pt-3 d-flex flex-column" v-for="( element, index ) in contacts[currentIndex].messages">
+                    <div v-bind:class="element.status">
+                        <p class="whidt-message rounded-3 ps-3 p-2 mt-1 d-flex justify-content-between">
+                            {{element.message}}
                             <span class="resize-small mt-4">12:00</span>
                         </p>
                     </div>
