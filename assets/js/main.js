@@ -5,6 +5,7 @@ var app = new Vue({
       {
         name: "Michele",
         avatar: "_1",
+        time: '09:57',
         visible: true,
         messages: [
           {
@@ -27,6 +28,7 @@ var app = new Vue({
       {
         name: "Fabio",
         avatar: "_2",
+        time: '11:45',
         visible: true,
         messages: [
           {
@@ -49,6 +51,7 @@ var app = new Vue({
       {
         name: "Samuele",
         avatar: "_3",
+        time: '12:10',
         visible: true,
         messages: [
           {
@@ -71,6 +74,7 @@ var app = new Vue({
       {
         name: "Alessandro B.",
         avatar: "_4",
+        time: '12:01',
         visible: true,
         messages: [
           {
@@ -88,6 +92,7 @@ var app = new Vue({
       {
         name: "Alessandro L.",
         avatar: "_5",
+        time: '00:37',
         visible: true,
         messages: [
           {
@@ -105,6 +110,7 @@ var app = new Vue({
       {
         name: "Claudia",
         avatar: "_6",
+        time: '02:17',
         visible: true,
         messages: [
           {
@@ -127,6 +133,7 @@ var app = new Vue({
       {
         name: "Federico",
         avatar: "_7",
+        time: '10:30',
         visible: true,
         messages: [
           {
@@ -144,6 +151,7 @@ var app = new Vue({
       {
         name: "Davide",
         avatar: "_8",
+        time: '12:37',
         visible: true,
         messages: [
           {

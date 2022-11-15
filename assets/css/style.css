@@ -40,9 +40,24 @@
     border-top: 1px solid lightgrey;
 }
 
-.chat-user > div > span{
+.chat-user > div > div > span{
     font-size: 0.7rem;
 }
+
+.inviati{
+    background-color: #D5F9BA;
+    width: 40%;
+}
+
+.ricevuti{
+    background-color: whitesmoke;
+    width: 40%;
+}
+
+.resize-small{
+    font-size: 0.5rem;
+}
+
 
 
 
