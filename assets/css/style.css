@@ -1,0 +1,37 @@
+#app{
+    background: linear-gradient(0deg, #DBDBD3 85%, #019788 15%);
+}
+
+#app > div{
+    height: 90%;
+}
+
+#profilo-utente{
+    width: 50px;
+    height: 50px;
+}
+
+.lightgrey-bg{
+    background-color: #EAEAEA;
+}
+
+.col-3 > .lightgrey-bg{
+    border-right: 1px solid grey;
+}
+
+.azure-bg{
+    background-color: #8EDAFC;
+}
+
+.fa-bell-slash{
+    color: #8EDAFC;
+    font-size: 1.4rem;
+}
+
+#chat{
+    background-image: url('../img/mine.jpg');
+}
+
+
+
+
