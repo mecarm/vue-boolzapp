@@ -174,6 +174,7 @@ var app = new Vue({
     ],
     currentIndex: 0,
     messageValue: '',
+    answer: 'ok bro',
   },
   methods: {
     indiceCorrente(param){
@@ -188,6 +189,18 @@ var app = new Vue({
       });
       //Svuoto il campo input ogni volta che premo invio
       this.messageValue = '';
+      this.answerBot(param);
+    },
+    answerBot(param){
+      //setto il set timeout a 2 secondi
+      answerBot = setTimeout(() => {
+        // Aggiungo la variabile answer all'array di oggetti messages con push
+        this.contacts[param].messages.push({
+          message: this.answer,
+          status: "received",
+        });
+      }, 2000);
+      
     }
   },
 });
