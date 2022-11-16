@@ -208,6 +208,9 @@ var app = new Vue({
     },
     randomInt(min, max){
       return num = Math.floor(Math.random() * (max - min) + min)
+    },
+    deleteMessage(param){
+      this.contacts[param].messages.splice(param, 1);
     }
   },
 });

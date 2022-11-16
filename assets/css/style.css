@@ -49,16 +49,27 @@
     justify-content: end;
 }
 
-.sent > p{
+.sent > .whidt-message{
     background-color: #D5F9BA;
+    border-bottom-right-radius: 0 !important;
+    border-top-right-radius: 30px !important;
+    border-bottom-left-radius: 30px !important;
 }
 
 .whidt-message{
     width: 40%;
 }
 
-.received > p{
+.received > .whidt-message{
     background-color: whitesmoke;
+    border-bottom-left-radius: 0 !important;
+    border-top-left-radius: 30px !important;
+    border-bottom-right-radius: 30px !important;
+}
+
+.whidt-message:hover .fa-chevron-down{
+    display: block !important;
+    font-size: 0.8rem;
 }
 
 .resize-small{
