@@ -175,6 +175,10 @@ var app = new Vue({
     currentIndex: 0,
     messageValue: '',
     answer: 'ok bro',
+    cercaNome: '',
+  },
+    created(){
+    console.log(this.cercaNome)
   },
   methods: {
     indiceCorrente(param){
@@ -189,6 +193,7 @@ var app = new Vue({
       });
       //Svuoto il campo input ogni volta che premo invio
       this.messageValue = '';
+      //invoco la funziona di risposta del bot
       this.answerBot(param);
     },
     answerBot(param){
@@ -200,8 +205,7 @@ var app = new Vue({
           status: "received",
         });
       }, 2000);
-      
-    }
+    },
   },
 });
 

@@ -47,13 +47,14 @@
             <!-- Container input finder -->
             <div class="input-group p-1">
                 <span class="input-group-text bg-light px-4" id="inputGroup-sizing-default"><i class="fa-solid fa-magnifying-glass text-secondary"></i></span>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Cerca o inizia una nuova chat">
+                <input v-model="cercaNome" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Cerca o inizia una nuova chat">
             </div>
                 <!-- Container select chat dinamiche-->
             <div class="overflow-auto flex-grow-1">
                 <!-- Creo ciclo for per generare in automatico tutte le card chat con avatar e nome  -->
                 <!-- Creo funzione indiceCorrente con parametro index del ciclo for per dare il valore dell'indice al click aslla variabile creata in data{} -->
-                <div v-for="( element, index ) in contacts" @click="indiceCorrente(index)" class="d-flex justify-content-between align-items-center chat-user p-3" >
+                <!-- Aggiungo v-if per verificare tramite la v-model della barra di ricerca di mostrare solo quelli contenenti le lettere (o meglio di generare)  -->
+                <div v-for="( element, index ) in contacts" @click="indiceCorrente(index)" v-if="element.name.includes(cercaNome)" class="d-flex justify-content-between align-items-center chat-user p-3" >
                     <div class="d-flex align-items-center">
                         <div class="profilo-utente pe-2">
                             <img class="w-100 rounded-circle" :src="`./assets/img/avatar${element.avatar}.jpg`" alt="">
@@ -63,7 +64,7 @@
                             <span class="text-secondary">Ultimo messaggio inviato</span>
                         </div>
                     </div>
-                    <div>
+                    <div v-if="element.name.includes(cercaNome)">
                         <span>{{element.time}}</span>
                     </div>
                 </div>
