@@ -177,9 +177,7 @@ var app = new Vue({
     answer: ['Okei', 'Va bene', 'Certo', 'Che fai?', 'Scusami al momento non posso rispondere', 'Hei', 'Ciao', 'Andiamo a cena stasera?', 'Oggi ho tanti impegni e non sto usando il cellulare spesso'],
     cercaNome: '',
   },
-    created(){
-    console.log(this.cercaNome)
-  },
+
   methods: {
     indiceCorrente(param){
         console.log(this.currentIndex);
@@ -209,8 +207,8 @@ var app = new Vue({
     randomInt(min, max){
       return num = Math.floor(Math.random() * (max - min) + min)
     },
-    deleteMessage(param){
-      this.contacts[param].messages.splice(param, 1);
+    deleteMessage(currentindex, param){
+      this.contacts[currentindex].messages.splice(param, 1);
     }
   },
 });
