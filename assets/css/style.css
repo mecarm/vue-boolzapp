@@ -65,8 +65,13 @@
     font-size: 0.5rem;
 }
 
-i{
+i,
+.pointer{
     cursor: pointer;
+}
+
+.small-size-font{
+    font-size: 0.7rem;
 }
 
 

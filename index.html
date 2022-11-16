@@ -51,31 +51,36 @@
             </div>
                 <!-- Container select chat dinamiche-->
             <div class="overflow-auto flex-grow-1">
-                <div v-for="( element, index ) in contacts" class="d-flex justify-content-between align-items-center chat-user p-3" @click="indiceCorrente(index)">
+                <!-- Creo ciclo for per generare in automatico tutte le card chat con avatar e nome  -->
+                <!-- Creo funzione indiceCorrente con parametro index del ciclo for per dare il valore dell'indice al click aslla variabile creata in data{} -->
+                <div v-for="( element, index ) in contacts" @click="indiceCorrente(index)" class="d-flex justify-content-between align-items-center chat-user p-3" >
                     <div class="d-flex align-items-center">
                         <div class="profilo-utente pe-2">
                             <img class="w-100 rounded-circle" :src="`./assets/img/avatar${element.avatar}.jpg`" alt="">
                         </div>
-                        <div>
+                        <div class="pointer">
                             <h6 class="m-0 p-0">{{element.name}}</h6>
                             <span class="text-secondary">Ultimo messaggio inviato</span>
                         </div>
                     </div>
                     <div>
-                        <h6>{{element.time}}</h6>
+                        <span>{{element.time}}</span>
                     </div>
                 </div>
             </div>
         </div>
         <!-- Contenitore Chat a destra -->
-        <div class="bg-light col-7 d-flex flex-column">
+        <div class="bg-light col-8 d-flex flex-column">
             <!-- Container dinamico chat utente -->
             <div class="lightgrey-bg d-flex justify-content-between align-items-center">
                 <div class="d-flex justify-content-between align-items-center p-2">
                     <div class="pe-2 profilo-utente">
                         <img class="w-100 rounded-circle" :src="`./assets/img/avatar${contacts[currentIndex].avatar}.jpg`" alt="">
                     </div>
-                    <span>{{contacts[currentIndex].name}}</span>
+                    <span>
+                        {{contacts[currentIndex].name}} 
+                        <p class="small-size-font mb-0"><i class="fa-solid fa-circle text-success pe-1 resize-small"></i>Online ora</p>
+                    </span>
                 </div>
                 <div class="p-3">
                     <i class="fa-solid fa-magnifying-glass ps-2 text-secondary"></i>
@@ -89,14 +94,15 @@
                     <div v-bind:class="element.status">
                         <p class="whidt-message rounded-3 ps-3 p-2 mt-1 d-flex justify-content-between">
                             {{element.message}}
-                            <span class="resize-small mt-4">12:00</span>
+                            <span class="resize-small mt-auto">12:00</span>
                         </p>
                     </div>
                 </div>
             </div>
             <div class="input-group p-2 bg-lightbrown">
                 <span class="input-group-text bg-lightbrown rounded-0 border-0 px-4" id="inputGroup-sizing-default"><i class="fa-regular fa-face-smile"></i></span>
-                <input type="text" class="form-control rounded-3" placeholder="Scrivi un messaggio" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <!-- Input messaggio da inviare: ho usato il v-model associato al nome della variabile e richiamo la funzione tramite v-on:keyup.enter="sentMessage(currentIndex)" -->
+                <input v-model="messageValue" type="text" class="form-control rounded-3" placeholder="Scrivi un messaggio" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" v-on:keyup.enter="sentMessage(currentIndex)">
                 <span class="input-group-text bg-lightbrown rounded-0 border-0 px-4" id="inputGroup-sizing-default"><i class="fa-solid fa-microphone"></i></span>
             </div>
         </div>

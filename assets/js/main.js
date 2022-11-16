@@ -173,11 +173,22 @@ var app = new Vue({
       },
     ],
     currentIndex: 0,
+    messageValue: '',
   },
   methods: {
     indiceCorrente(param){
         console.log(this.currentIndex);
         return this.currentIndex = param
+    },
+    sentMessage(param){
+      //Aggiungo all array di oggetti messages con push il valore tramite v-model nell'input.
+      this.contacts[param].messages.push({
+        message: this.messageValue, 
+        status: 'sent',
+      });
+      //Svuoto il campo input ogni volta che premo invio
+      this.messageValue = '';
     }
   },
 });
+
