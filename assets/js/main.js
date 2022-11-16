@@ -174,7 +174,7 @@ var app = new Vue({
     ],
     currentIndex: 0,
     messageValue: '',
-    answer: 'ok bro',
+    answer: ['Okei', 'Va bene', 'Certo', 'Che fai?', 'Scusami al momento non posso rispondere', 'Hei', 'Ciao', 'Andiamo a cena stasera?', 'Oggi ho tanti impegni e non sto usando il cellulare spesso'],
     cercaNome: '',
   },
     created(){
@@ -201,11 +201,14 @@ var app = new Vue({
       answerBot = setTimeout(() => {
         // Aggiungo la variabile answer all'array di oggetti messages con push
         this.contacts[param].messages.push({
-          message: this.answer,
+          message: this.answer[this.randomInt(0, this.answer.length)],
           status: "received",
         });
       }, 2000);
     },
+    randomInt(min, max){
+      return num = Math.floor(Math.random() * (max - min) + min)
+    }
   },
 });
 
