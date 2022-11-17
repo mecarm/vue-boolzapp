@@ -201,7 +201,7 @@ var app = new Vue({
         this.messageValue = "";
         //invoco la funziona di risposta del bot
         this.answerBot(param);
-        
+        this.scrollToEnd();
       }
       
     },
@@ -214,6 +214,7 @@ var app = new Vue({
       
       answerBot = setTimeout(() => {
         this.staScrivendo = false;
+        this.scrollToEnd();
         // Aggiungo la variabile answer all'array di oggetti messages con push
         this.contacts[param].messages.push({
           message: this.answer[this.randomInt(0, this.answer.length)],
@@ -238,6 +239,12 @@ var app = new Vue({
       date = lastdate.split(' ');
       return date[1];
     },
+    scrollToEnd: function() {  
+      setTimeout(()=>{
+      let container = document.getElementById('chat');
+      container.scrollTo(0, container.scrollHeight)
+  },100);
+  },
 
   },
 });

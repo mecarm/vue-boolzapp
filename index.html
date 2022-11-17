@@ -78,9 +78,12 @@
                     <div class="pe-2 profilo-utente">
                         <img class="w-100 rounded-circle" :src="`./assets/img/avatar${contacts[currentIndex].avatar}.jpg`" alt="">
                     </div>
+                    <!-- Invoco l'immagine della chat aperta che cambia dinamicamente grazie all'indicecorrente -->
                     <span>
-                        {{contacts[currentIndex].name}} 
+                        {{contacts[currentIndex].name}}
+                         <!--Condizione IF, all'avvio della funzione sentMessage la variabile staScrivendo diventa true e mostra il primo v-if  -->
                         <p v-if="staScrivendo == true" class="small-size-font mb-0"><i class="fa-solid fa-circle text-success pe-1 resize-small"></i>sta scrivendo...</p>
+                        <!-- Quando la varabile staScrivendo è false genera dinamicamente l'ultimo accesso in base all'ultimo mex inviato -->
                         <p v-else class="small-size-font mb-0">Ultimo accesso alle ore {{getLastHourContacts(contacts[currentIndex])}}</p>
                     </span>
                 </div>
@@ -98,7 +101,7 @@
                         <div class="whidt-message rounded-4 ps-3 p-2 mt-1 mb-2 d-flex justify-content-between">
                         <!-- Generatore messaggi dinamici -->
                             <div class="py-1">{{element.message}}</div>
-                            <div class="d-flex flex-column justify-content-between resize-small align-items-center">
+                            <div class="d-flex flex-column justify-content-between resize-small align-items-center pe-2">
                                 <!-- Dropdown all'hover del messaggio per eliminarlo -->
                                 <div class="dropdown">
                                     <button class="d-none" data-bs-toggle="dropdown" aria-expanded="false">
