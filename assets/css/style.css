@@ -44,6 +44,10 @@
     font-size: 0.7rem;
 }
 
+.chat-user:hover{
+    background-color: #DBDBD3;
+}
+
 .sent{
     display: flex;
     justify-content: end;
@@ -67,7 +71,7 @@
     border-bottom-right-radius: 30px !important;
 }
 
-.whidt-message:hover .fa-chevron-down{
+.whidt-message:hover .d-none{
     display: block !important;
     font-size: 0.8rem;
 }
@@ -85,6 +89,9 @@ i,
     font-size: 0.7rem;
 }
 
+#input-change:active .fa-microphone{
+    display: none !important;
+}
 
 
 

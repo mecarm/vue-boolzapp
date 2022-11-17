@@ -65,7 +65,7 @@
                         </div>
                     </div>
                     <div v-if="element.name.includes(cercaNome)">
-                        <span>{{getLastHourContacts(element)}}</span>
+                        <span class="small-size-font text-secondary" >{{getLastHourContacts(element)}}</span>
                     </div>
                 </div>
             </div>
@@ -92,19 +92,23 @@
             <!-- Container Chat -->
             <div id="chat" class="overflow-auto flex-grow-1">
                 <div class="px-5 pt-3 d-flex flex-column" v-for="( element, index ) in contacts[currentIndex].messages">
+                <!-- Contenitore testo messaggi con classe dinamica in base a se sono messaggi inviati o ricevuti -->
                     <div v-bind:class="element.status">
                         <div class="whidt-message rounded-4 ps-3 p-2 mt-1 mb-2 d-flex justify-content-between">
+                        <!-- Generatore messaggi dinamici -->
                             <div>{{element.message}}</div>
                             <div class="d-flex flex-column justify-content-between resize-small align-items-center">
+                                <!-- Dropdown all'hover del messaggio per eliminarlo -->
                                 <div class="dropdown">
-                                    <button class="btn" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="d-none fa-solid fa-chevron-down"></i>
+                                    <button class="btn d-none" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa-solid fa-chevron-down"></i>
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="#">Info messaggio</a></li>
                                         <li @click="deleteMessage(currentIndex, index)"><a class="dropdown-item" href="#">Elimina messaggio</a></li>
                                     </ul>
                                 </div>
+                                <!-- Genero ora dinamicamente in base all'ora attuale -->
                                 <span class="resize-small mt-auto">{{getLastHourMessages(element)}}</span>
                             </div>
                         </div>
@@ -114,8 +118,9 @@
             <div class="input-group p-2 bg-lightbrown">
                 <span class="input-group-text bg-lightbrown rounded-0 border-0 px-4" id="inputGroup-sizing-default"><i class="fa-regular fa-face-smile"></i></span>
                 <!-- Input messaggio da inviare: ho usato il v-model associato al nome della variabile e richiamo la funzione tramite v-on:keyup.enter="sentMessage(currentIndex)" -->
-                <input v-model="messageValue" type="text" class="form-control rounded-3" placeholder="Scrivi un messaggio" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" v-on:keyup.enter="sentMessage(currentIndex)">
-                <span class="input-group-text bg-lightbrown rounded-0 border-0 px-4" id="inputGroup-sizing-default"><i class="fa-solid fa-microphone"></i></span>
+                <input v-model="messageValue" type="text" id="input-change" class="form-control rounded-3" placeholder="Scrivi un messaggio" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" v-on:keyup.enter="sentMessage(currentIndex)">
+                <span v-if='messageValue == "" ' class="input-group-text bg-lightbrown rounded-0 border-0 px-4" id="inputGroup-sizing-default"><i class="fa-solid fa-microphone"></i></span>
+                <span v-else @click="sentMessage(currentIndex)" class="input-group-text bg-lightbrown rounded-0 border-0 px-4" id="inputGroup-sizing-default"><i class="fa-solid fa-paper-plane"></i></span>
             </div>
         </div>
     </div>

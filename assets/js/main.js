@@ -176,9 +176,12 @@ var app = new Vue({
         return this.currentIndex = param
     },
     sentMessage(param){
+      // Verifico se il campo input è vuoto ritornando false in modo da non inviare messaggi vuoti
       if (this.messageValue.trim().length == '') {
         return false;
-      } else {
+      } 
+        // Se il campo contiene lettere allora  svolge questo codice
+      else {
         //Prendere l'ora di ogni momento con new date
         const d = new Date();
         let time = d.toLocaleTimeString([], {
