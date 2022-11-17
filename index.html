@@ -65,7 +65,7 @@
                         </div>
                     </div>
                     <div v-if="element.name.includes(cercaNome)">
-                        <span>{{element.time}}</span>
+                        <span>{{getLastHourContacts(element)}}</span>
                     </div>
                 </div>
             </div>
@@ -105,7 +105,7 @@
                                         <li @click="deleteMessage(currentIndex, index)"><a class="dropdown-item" href="#">Elimina messaggio</a></li>
                                     </ul>
                                 </div>
-                                <span class="resize-small mt-auto">12:00</span>
+                                <span class="resize-small mt-auto">{{getLastHourMessages(element)}}</span>
                             </div>
                         </div>
                     </div>

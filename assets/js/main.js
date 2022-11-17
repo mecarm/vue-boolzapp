@@ -5,21 +5,20 @@ var app = new Vue({
       {
         name: "Michele",
         avatar: "_1",
-        time: '09:57',
         visible: true,
         messages: [
           {
-            date: "10/01/2020 15:30:55",
+            date: "10/01/2020 15:30",
             message: "Hai portato a spasso il cane?",
             status: "sent",
           },
           {
-            date: "10/01/2020 15:50:00",
+            date: "10/01/2020 15:50",
             message: "Ricordati di stendere i panni",
             status: "sent",
           },
           {
-            date: "10/01/2020 16:15:22",
+            date: "10/01/2020 16:15",
             message: "Tutto fatto!",
             status: "received",
           },
@@ -28,21 +27,20 @@ var app = new Vue({
       {
         name: "Fabiola",
         avatar: "_2",
-        time: '11:45',
         visible: true,
         messages: [
           {
-            date: "20/03/2020 16:30:00",
+            date: "20/03/2020 16:30",
             message: "Ciao come stai?",
             status: "sent",
           },
           {
-            date: "20/03/2020 16:30:55",
+            date: "20/03/2020 16:30",
             message: "Bene grazie! Stasera ci vediamo?",
             status: "received",
           },
           {
-            date: "20/03/2020 16:35:00",
+            date: "20/03/2020 16:35",
             message: "Mi piacerebbe ma devo andare a fare la spesa.",
             status: "sent",
           },
@@ -51,21 +49,20 @@ var app = new Vue({
       {
         name: "Samuele",
         avatar: "_3",
-        time: '12:10',
         visible: true,
         messages: [
           {
-            date: "28/03/2020 10:10:40",
+            date: "28/03/2020 10:10",
             message: "La Marianna va in campagna",
             status: "received",
           },
           {
-            date: "28/03/2020 10:20:10",
+            date: "28/03/2020 10:20",
             message: "Sicuro di non aver sbagliato chat?",
             status: "sent",
           },
           {
-            date: "28/03/2020 16:15:22",
+            date: "28/03/2020 16:15",
             message: "Ah scusa!",
             status: "received",
           },
@@ -74,16 +71,15 @@ var app = new Vue({
       {
         name: "Alessandro B.",
         avatar: "_4",
-        time: '12:01',
         visible: true,
         messages: [
           {
-            date: "10/01/2020 15:30:55",
+            date: "10/01/2020 15:30",
             message: "Lo sai che ha aperto una nuova pizzeria?",
             status: "sent",
           },
           {
-            date: "10/01/2020 15:50:00",
+            date: "10/01/2020 15:50",
             message: "Si, ma preferirei andare al cinema",
             status: "received",
           },
@@ -92,16 +88,15 @@ var app = new Vue({
       {
         name: "Alessandro L.",
         avatar: "_5",
-        time: '00:37',
         visible: true,
         messages: [
           {
-            date: "10/01/2020 15:30:55",
+            date: "10/01/2020 15:30",
             message: "Ricordati di chiamare la nonna",
             status: "sent",
           },
           {
-            date: "10/01/2020 15:50:00",
+            date: "10/01/2020 15:50",
             message: "Va bene, stasera la sento",
             status: "received",
           },
@@ -110,21 +105,20 @@ var app = new Vue({
       {
         name: "Claudia",
         avatar: "_6",
-        time: '02:17',
         visible: true,
         messages: [
           {
-            date: "10/01/2020 15:30:55",
+            date: "10/01/2020 15:30",
             message: "Ciao Claudia, hai novità?",
             status: "sent",
           },
           {
-            date: "10/01/2020 15:50:00",
+            date: "10/01/2020 15:50",
             message: "Non ancora",
             status: "received",
           },
           {
-            date: "10/01/2020 15:51:00",
+            date: "10/01/2020 15:51",
             message: "Nessuna nuova, buona nuova",
             status: "sent",
           },
@@ -133,16 +127,15 @@ var app = new Vue({
       {
         name: "Federico",
         avatar: "_7",
-        time: '10:30',
         visible: true,
         messages: [
           {
-            date: "10/01/2020 15:30:55",
+            date: "10/01/2020 15:30",
             message: "Fai gli auguri a Martina che è il suo compleanno!",
             status: "sent",
           },
           {
-            date: "10/01/2020 15:50:00",
+            date: "10/01/2020 15:50",
             message: "Grazie per avermelo ricordato, le scrivo subito!",
             status: "received",
           },
@@ -151,21 +144,20 @@ var app = new Vue({
       {
         name: "Davide",
         avatar: "_8",
-        time: '12:37',
         visible: true,
         messages: [
           {
-            date: "10/01/2020 15:30:55",
+            date: "10/01/2020 15:30",
             message: "Ciao, andiamo a mangiare la pizza stasera?",
             status: "received",
           },
           {
-            date: "10/01/2020 15:50:00",
+            date: "10/01/2020 15:50",
             message: "No, l'ho già mangiata ieri, ordiniamo sushi!",
             status: "sent",
           },
           {
-            date: "10/01/2020 15:51:00",
+            date: "10/01/2020 15:51",
             message: "OK!!",
             status: "received",
           },
@@ -184,10 +176,15 @@ var app = new Vue({
         return this.currentIndex = param
     },
     sentMessage(param){
+      //Prendere l'ora di ogni momento con new date
+      const d = new Date();
+      let time = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      let data = d.toLocaleDateString();
       //Aggiungo all array di oggetti messages con push il valore tramite v-model nell'input.
       this.contacts[param].messages.push({
         message: this.messageValue, 
         status: 'sent',
+        date: `${data} ${time}`
       });
       //Svuoto il campo input ogni volta che premo invio
       this.messageValue = '';
@@ -195,12 +192,17 @@ var app = new Vue({
       this.answerBot(param);
     },
     answerBot(param){
+      //Prendere l'ora di ogni momento con new date
+      const d = new Date();
+      let time = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      let data = d.toLocaleDateString();
       //setto il set timeout a 2 secondi
       answerBot = setTimeout(() => {
         // Aggiungo la variabile answer all'array di oggetti messages con push
         this.contacts[param].messages.push({
           message: this.answer[this.randomInt(0, this.answer.length)],
           status: "received",
+          date: `${data} ${time}`
         });
       }, 2000);
     },
@@ -209,7 +211,18 @@ var app = new Vue({
     },
     deleteMessage(currentindex, param){
       this.contacts[currentindex].messages.splice(param, 1);
-    }
+    },
+    getLastHourMessages(param){
+      let date = param.date;
+      date = date.split(' ');
+      return date[1];
+    },
+    getLastHourContacts(param){
+      let lastdate = param.messages[ param.messages.length-1 ].date;
+      date = lastdate.split(' ');
+      return date[1];
+    },
+
   },
 });
 
