@@ -168,6 +168,7 @@ var app = new Vue({
     messageValue: '',
     answer: ['Okei', 'Va bene', 'Certo', 'Che fai?', 'Scusami al momento non posso rispondere', 'Hei', 'Ciao', 'Andiamo a cena stasera?', 'Oggi ho tanti impegni e non sto usando il cellulare spesso'],
     cercaNome: '',
+    staScrivendo: false,
   },
 
   methods: {
@@ -182,6 +183,7 @@ var app = new Vue({
       } 
         // Se il campo contiene lettere allora  svolge questo codice
       else {
+        this.staScrivendo = true;
         //Prendere l'ora di ogni momento con new date
         const d = new Date();
         let time = d.toLocaleTimeString([], {
@@ -199,6 +201,7 @@ var app = new Vue({
         this.messageValue = "";
         //invoco la funziona di risposta del bot
         this.answerBot(param);
+        
       }
       
     },
@@ -208,14 +211,16 @@ var app = new Vue({
       let time = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
       let data = d.toLocaleDateString();
       //setto il set timeout a 2 secondi
+      
       answerBot = setTimeout(() => {
+        this.staScrivendo = false;
         // Aggiungo la variabile answer all'array di oggetti messages con push
         this.contacts[param].messages.push({
           message: this.answer[this.randomInt(0, this.answer.length)],
           status: "received",
           date: `${data} ${time}`
         });
-      }, 2000);
+      }, 4000);
     },
     randomInt(min, max){
       return num = Math.floor(Math.random() * (max - min) + min)

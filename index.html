@@ -80,7 +80,8 @@
                     </div>
                     <span>
                         {{contacts[currentIndex].name}} 
-                        <p class="small-size-font mb-0"><i class="fa-solid fa-circle text-success pe-1 resize-small"></i>Online ora</p>
+                        <p v-if="staScrivendo == true" class="small-size-font mb-0"><i class="fa-solid fa-circle text-success pe-1 resize-small"></i>sta scrivendo...</p>
+                        <p v-else class="small-size-font mb-0">Ultimo accesso alle ore {{getLastHourContacts(contacts[currentIndex])}}</p>
                     </span>
                 </div>
                 <div class="p-3">
@@ -96,11 +97,11 @@
                     <div v-bind:class="element.status">
                         <div class="whidt-message rounded-4 ps-3 p-2 mt-1 mb-2 d-flex justify-content-between">
                         <!-- Generatore messaggi dinamici -->
-                            <div>{{element.message}}</div>
+                            <div class="py-1">{{element.message}}</div>
                             <div class="d-flex flex-column justify-content-between resize-small align-items-center">
                                 <!-- Dropdown all'hover del messaggio per eliminarlo -->
                                 <div class="dropdown">
-                                    <button class="btn d-none" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <button class="d-none" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="fa-solid fa-chevron-down"></i>
                                     </button>
                                     <ul class="dropdown-menu">
