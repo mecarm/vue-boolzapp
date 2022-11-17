@@ -54,7 +54,7 @@
                 <!-- Creo ciclo for per generare in automatico tutte le card chat con avatar e nome  -->
                 <!-- Creo funzione indiceCorrente con parametro index del ciclo for per dare il valore dell'indice al click aslla variabile creata in data{} -->
                 <!-- Aggiungo v-if per verificare tramite la v-model della barra di ricerca di mostrare solo quelli contenenti le lettere (o meglio di generare)  -->
-                <div v-for="( element, index ) in contacts" @click="indiceCorrente(index)" v-if="element.name.toLowerCase().includes(cercaNome)" class="d-flex justify-content-between align-items-center chat-user p-3" >
+                <div v-for="( element, index ) in contacts" @click="indiceCorrente(index)" v-if="element.name.toLowerCase().includes(cercaNome.toLowerCase())" class="d-flex justify-content-between align-items-center chat-user p-3" >
                     <div class="d-flex align-items-center">
                         <div class="profilo-utente pe-2">
                             <img class="w-100 rounded-circle" :src="`./assets/img/avatar${element.avatar}.jpg`" alt="">
@@ -93,7 +93,7 @@
             <div id="chat" class="overflow-auto flex-grow-1">
                 <div class="px-5 pt-3 d-flex flex-column" v-for="( element, index ) in contacts[currentIndex].messages">
                     <div v-bind:class="element.status">
-                        <div class="whidt-message rounded-4 ps-3 p-2 mt-1 d-flex justify-content-between">
+                        <div class="whidt-message rounded-4 ps-3 p-2 mt-1 mb-2 d-flex justify-content-between">
                             <div>{{element.message}}</div>
                             <div class="d-flex flex-column justify-content-between resize-small align-items-center">
                                 <div class="dropdown">

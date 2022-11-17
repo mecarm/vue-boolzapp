@@ -176,20 +176,28 @@ var app = new Vue({
         return this.currentIndex = param
     },
     sentMessage(param){
-      //Prendere l'ora di ogni momento con new date
-      const d = new Date();
-      let time = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-      let data = d.toLocaleDateString();
-      //Aggiungo all array di oggetti messages con push il valore tramite v-model nell'input.
-      this.contacts[param].messages.push({
-        message: this.messageValue, 
-        status: 'sent',
-        date: `${data} ${time}`
-      });
-      //Svuoto il campo input ogni volta che premo invio
-      this.messageValue = '';
-      //invoco la funziona di risposta del bot
-      this.answerBot(param);
+      if (this.messageValue.trim().length == '') {
+        return false;
+      } else {
+        //Prendere l'ora di ogni momento con new date
+        const d = new Date();
+        let time = d.toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+        let data = d.toLocaleDateString();
+        //Aggiungo all array di oggetti messages con push il valore tramite v-model nell'input.
+        this.contacts[param].messages.push({
+          message: this.messageValue,
+          status: "sent",
+          date: `${data} ${time}`,
+        });
+        //Svuoto il campo input ogni volta che premo invio
+        this.messageValue = "";
+        //invoco la funziona di risposta del bot
+        this.answerBot(param);
+      }
+      
     },
     answerBot(param){
       //Prendere l'ora di ogni momento con new date
