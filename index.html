@@ -61,7 +61,7 @@
                         </div>
                         <div class="pointer">
                             <h6 class="m-0 p-0">{{element.name}}</h6>
-                            <span class="text-secondary">Ultimo messaggio inviato</span>
+                            <span class="text-secondary">{{getLastMessage(element)}}</span>
                         </div>
                     </div>
                     <div v-if="element.name.includes(cercaNome)">

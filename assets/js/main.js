@@ -239,12 +239,16 @@ var app = new Vue({
       date = lastdate.split(' ');
       return date[1];
     },
-    scrollToEnd: function() {  
+    scrollToEnd() {  
       setTimeout(()=>{
       let container = document.getElementById('chat');
       container.scrollTo(0, container.scrollHeight)
   },100);
   },
+  getLastMessage(param){
+    let lastmessage = param.messages[ param.messages.length-1 ].message;
+    return lastmessage;
+  }
 
   },
 });
